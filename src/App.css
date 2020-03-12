@@ -1,38 +1,260 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body{
+  /* width: 100vw;
+  height: 100vh; */
+  background-image: linear-gradient(rgb(178,24,35), rgb(101,15,16));
+  /* background-color: black; */
+  /* background-image: url('assets/img/BG.svg'); */
+  padding: 24px;
+}
+.bg-container{
+  /* background-image: linear-gradient(rgb(178,24,35), rgb(101,15,16)); */
+  background-size: cover;
+  background-image: url('assets/img/BG.svg');
+  background-repeat: no-repeat;
+  /* height: 30%; */
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* border: 2px solid red; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo-container{
+  /* border: 2px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.code-relay-logo{
+  margin-top: 27%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.content-below-logo{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin-top: 5%;
+}
+
+.content-below-logo__line1{
+  font-family: "Montserrat";
+  font-size: 1.5rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.content-below-logo__line2{
+  font-family: "Montserrat";
+  font-size: 1.3rem;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hackerrank-container{
+  margin-top: 10%;
+  margin-bottom: 6%;
+  width: 100%;
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hackerrank-logo-before{
+  margin: 18px;
+  margin-left: 0px;
+  color: white;
+  font-family: "Montserrat";
+}
+
+.hackerrank-logo{
+  height: 153px;
+  width: 153px;
+}
+
+.form-container{
+  width: 100%;
+  /* margin: 10px; */
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.form-card{
+  background-color: white;
+  height: fit-content;
+  padding: 10px;
+  width: 40%;
+  border-radius: 16px;
+}
+
+.form-heading{
+  width: 100%;
+  font-size: 36px;
+  /* border: 2px solid black; */
+  text-align: center;
+  font-weight: 600;
+  margin-top: 30px;
+  font-family: "Montserrat";
+}
+
+.card-body{
+  /* border: 2px solid red; */
+  margin: auto 10%;
+}
+
+.form-row{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.label{
+  /* text-align: start; */
+  /* color: green; */
+  font-family: "Montserrat";
+}
+
+.form-row-input{
+  width: 80%;
+  border: 0px;
+  /* border-bottom: 1px solid black; */
+  /* margin: auto; */
+}
+
+.submit-button-container{
+  width: 100%;
+  margin: 20px 0px;
+  margin-top: -10px;
+  display: flex;
+}
+
+.submit-button{
+  outline: none;
+  border: none;
+  margin: auto;
+  padding: 9px 27px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  font-family: "Montserrat";
+}
+
+.logos-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 70px 0px;
+  /* border: 2px solid black; */
+}
+
+.handle-logo{
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+@media (max-width:600px){
+  .bg-container{
+    background-size: contain;
   }
-  to {
-    transform: rotate(360deg);
+
+  .logo-container{
+    /* margin-top: 40%; */
+  }
+
+  .code-relay-logo{
+    width: 90%;
+    /* margin-top: 60%; */
+    margin-top: 30%;
+  }
+  
+  .content-below-logo{
+    margin-top: 20%;
+  }
+
+  .content-below-logo__line1{
+    font-size: 14px;
+    /* font-stretch: ; */
+    text-align: center;
+  }
+
+  .content-below-logo__line2{
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .hackerrank-logo-before{
+    font-size: 14px;
+    margin: 15px;
+  }
+
+  .hackerrank-container{
+    /* height: 100px; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 18%;
+  }
+
+  .hackerrank-logo{
+    height: 40px;
+  }
+
+  .form-container{
+    margin-top: 21%;
+  }
+
+  .form-card{
+    width: 90vw;
+  }
+
+  .card-body{
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .submit-button-container{
+    margin: 0px;
+    margin-bottom: 10px;
+    padding: 0px;
   }
 }
+
+/* .one{
+  width: 100%;height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+} */
+
+/* h1{
+  font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 32px;line-height: 49px;text-align: center;color: #FFFFFF;margin: 24px auto;
+}
+
+.two{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+  bottom: 48px;
+  position: absolute;
+  margin: auto;
+}
+
+.para{
+  font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 24px;line-height: 29px;text-align: center;color: #FFFFFF;margin: auto;margin-right: 32px;
+} */
