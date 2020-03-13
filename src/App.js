@@ -150,7 +150,8 @@ class App extends React.Component{
     await this.preprocess();
     // console.log(this.state);
     // fetch(`${process.env.REACT_APP_API_URL}/api/user/reg`,{
-      fetch(`${process.env.react_app_api_url}/api/user/reg`,{
+      // fetch(`${process.env.react_app_api_url}/api/user/reg`,{
+        fetch("https://ieeevit-cc.herokuapp.com",{
         method: "post",
         headers: {
             'Content-type':'application/json',
@@ -264,8 +265,9 @@ class App extends React.Component{
         <div className="recaptcha">
                 <Recaptcha
                 ref={e => recaptchaInstance = e}
-                sitekey={process.env.react_app_recaptcha_key}
+                // sitekey={process.env.react_app_recaptcha_key}
                 // sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+                sitekey="6LcAqeAUAAAAAMro7YMR7THCe_m-T-GRWbhC93rr"
                 size="invisible"
                 theme="light"
                 verifyCallback={this.verifyCallback}
