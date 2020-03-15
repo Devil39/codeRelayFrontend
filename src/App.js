@@ -38,7 +38,8 @@ class App extends React.Component{
       minutes: 0,
       hours: 0,
       seconds: 0,
-      time_up:""
+      time_up:"",
+      token: ""
     }
     this.x = null
     this.deadline = null
@@ -56,6 +57,9 @@ class App extends React.Component{
 
   verifyCallback=(token)=>{
     if (token) {
+        this.setState({
+          token: token
+        });
         this.setState({isVerified: true}, () => {
             console.log("Verified recaptcha!");
         });
@@ -151,7 +155,7 @@ class App extends React.Component{
     // console.log(this.state);
     // fetch(`${process.env.REACT_APP_API_URL}/api/user/reg`,{
       // fetch(`${process.env.react_app_api_url}/api/user/reg`,{
-        fetch("https://ieeevit-cc.herokuapp.com",{
+        fetch("https://ieeevit-cc.herokuapp.com/api/user/reg",{
         method: "post",
         headers: {
             'Content-type':'application/json',
@@ -162,6 +166,7 @@ class App extends React.Component{
             regNo: this.state.regNo,
             contactNo: this.state.phoneNo,
             hackerrankid: this.state.userID,
+            'g-recaptcha-response': this.state.token,
         })
     }).then((data)=>{
         // return data.json();
@@ -204,7 +209,7 @@ class App extends React.Component{
             <img src={CodeRelay} alt="" className="code-relay-logo"/>
           </div>
           <div className="content-below-logo">
-            <p className="content-below-logo__line1">A competition coding contest organized by IEEE VIT.</p>
+            <p className="content-below-logo__line1">A competitive coding contest organized by IEEE VIT.</p>
     <p className="content-below-logo__line2">The marathon begins in {this.state.days} days {this.state.hours} hours {this.state.minutes} minutes {this.state.seconds} seconds</p>
           </div>
           {/* <div className="one">
@@ -234,7 +239,7 @@ class App extends React.Component{
                 </div>
                 <div className="form-row">
                   <label className="label">Registration Number</label>
-                  <input pattern="[0-9]{2}[A-Za-z]{3}[0-9]{4}" type="text" className="form-row-input" placeholder="19BCE001" onClick={this.showBottomBorder} onChange={this.onRegNoChange}/>
+                  <input pattern="[0-9]{2}[A-Za-z]{3}[0-9]{4}" type="text" className="form-row-input" placeholder="19BCE0001" onClick={this.showBottomBorder} onChange={this.onRegNoChange}/>
                 </div>
                 <div className="form-row">
                   <label className="label">Contact Number</label>
