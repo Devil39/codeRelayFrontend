@@ -16,11 +16,11 @@ import ieeeLogo from './assets/img/IEEE.png';
 
 require('dotenv').config();
 
-let recaptchaInstance;
+// let recaptchaInstance;
 
-const executeCaptcha = function () {
-  recaptchaInstance.execute();
-};
+// const executeCaptcha = function () {
+//   recaptchaInstance.execute();
+// };
 
 class App extends React.Component{
 
@@ -41,34 +41,54 @@ class App extends React.Component{
       time_up:"",
       token: ""
     }
-    this.x = null
-    this.deadline = null
+    this.x = null;
+    this.deadline = null;
+    this.repcaptchaLoaded=this.repcaptchaLoaded.bind(this);
+    this.verifyCallBack=this.verifyCallBack.bind(this);
   }
 
   componentDidMount(){
-      setTimeout(function(){
-          // console.log("executeCaptcha");
-          executeCaptcha();
-          // console.log("executeCaptchaDone");
-      }, 1000);
+      // setTimeout(function(){
+      //     // console.log("executeCaptcha");
+      //     executeCaptcha();
+      //     // console.log("executeCaptchaDone");
+      // }, 1000);
       this.deadline = new Date("mar 21, 2020 20:20:00").getTime();
       this.x = setInterval(this.count, 1000);
   }
 
-  verifyCallback=(token)=>{
-    if (token) {
-        this.setState({
-          token: token
-        });
-        this.setState({isVerified: true}, () => {
-            console.log("Verified recaptcha!");
-        });
+  verifyCallBack=(response)=>{
+    // console.log(response);
+    if(response){
+      this.setState({
+        isVerified: true
+      });
+      this.setState({token: response});
     }
-    else {
-        this.setState({isVerified: false});
-        console.log("failed to verify recaptcha!");
+    if(this.state.isVerified && this.state.domains.length===0){
+      //this.pushdomains();
+      //this.adddomains();
     }
-}
+  }
+
+  repcaptchaLoaded=()=>{
+    console.log("Success!");
+  }
+
+//   verifyCallback=(token)=>{
+//     if (token) {
+//         this.setState({
+//           token: token
+//         });
+//         this.setState({isVerified: true}, () => {
+//             console.log("Verified recaptcha!");
+//         });
+//     }
+//     else {
+//         this.setState({isVerified: false});
+//         console.log("failed to verify recaptcha!");
+//     }
+// }
 
   showBottomBorder=()=>{
     // document.getElementsByClassName("form-row-input").style.borderBottom="1px solid black";
@@ -250,6 +270,30 @@ class App extends React.Component{
                   <input type="text" className="form-row-input" placeholder="Enter your user ID of Hackerrank" onClick={this.showBottomBorder} onChange={this.onUserIDChange}/>
                 </div>
               </div>
+              <div className="recaptcha">
+                      {/* <Recaptcha
+                      ref={e => recaptchaInstance = e}
+                      // sitekey={process.env.react_app_recaptcha_key}
+                      // sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+                      sitekey="6LcfPOIUAAAAALWpLTY7CnSZ0zmyB-GjNaBZCzhX"
+                      size="invisible"
+                      theme="light"
+                      verifyCallback={this.verifyCallback}
+                      onloadCallback={(res)=>{
+                          console.log(res);
+                          console.log("Loaded captcha");
+                      }}
+                  /> */}
+                  <Recaptcha
+                    // style={{"margin": "0px auto;"}}
+                    sitekey={'6LcfPOIUAAAAALWpLTY7CnSZ0zmyB-GjNaBZCzhX'}
+                    render="explicit"
+                    onloadCallback={(res)=>{
+                        console.log("loaded");
+                      }}
+                    verifyCallback={this.verifyCallBack}
+                  />
+              </div>
               <div className="submit-button-container">
                 {/* <button className="submit-button" type="submit" onSubmit={this.submitHandle}>Submit</button> */}
                 <button className="submit-button" type="submit" onClick={this.recaptchaVerify}>Submit</button>
@@ -267,21 +311,6 @@ class App extends React.Component{
             </div>
           </div>
         </div>
-        <div className="recaptcha">
-                <Recaptcha
-                ref={e => recaptchaInstance = e}
-                // sitekey={process.env.react_app_recaptcha_key}
-                // sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
-                sitekey="6LcAqeAUAAAAAMro7YMR7THCe_m-T-GRWbhC93rr"
-                size="invisible"
-                theme="light"
-                verifyCallback={this.verifyCallback}
-                onloadCallback={(res)=>{
-                    console.log(res);
-                    console.log("Loaded captcha");
-                }}
-            />
-            </div>
       </div>
     );
   }

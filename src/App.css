@@ -165,6 +165,17 @@ body{
   margin-bottom: 30px;
 }
 
+.recaptcha{
+  /* border: 2px solid red; */
+  display: flex;
+  /* margin: auto; */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 18px;
+  margin-top: -30px;
+}
+
 @media (max-width:600px){
   .bg-container{
     background-size: contain;
