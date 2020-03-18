@@ -51,7 +51,7 @@ class App extends React.Component{
           executeCaptcha();
           // console.log("executeCaptchaDone");
       }, 1000);
-      this.deadline = new Date("mar 20, 2020 20:20:00").getTime();
+      this.deadline = new Date("mar 21, 2020 20:20:00").getTime();
       this.x = setInterval(this.count, 1000);
   }
 
